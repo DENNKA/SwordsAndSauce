@@ -27,6 +27,9 @@ func move(delta):
 		direction.x = 1
 	if Input.is_action_pressed("move_back"):
 		direction.x = -1
+		
+	if Input.is_mouse_button_pressed(BUTTON_LEFT):
+		pass
 	
 	if direction:
 		direction *= MOVEMENT * delta
