@@ -13,6 +13,10 @@ func action():
 
 func _physics_process(delta):
 	
+	move(delta)
+	action_activate()
+
+func move(delta):
 	direction = Vector3.ZERO
 	
 	if Input.is_action_pressed("move_right"):
@@ -33,3 +37,6 @@ func _physics_process(delta):
 	
 	move_and_slide(velocity, Vector3.UP)
 
+func action_activate():
+	if Input.is_action_just_pressed("use"):
+		action()

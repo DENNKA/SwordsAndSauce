@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=2]
 [ext_resource path="res://scenes/test_weapon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gui.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CylinderShape" id=2]
 
@@ -38,5 +39,7 @@ speed = 10.0
 enabled = true
 script = ExtResource( 2 )
 
+[node name="gui" parent="." instance=ExtResource( 4 )]
+
 [node name="test_weapon" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.00326711, 0, -0.00999867, 0, 0.2, 0, 0.199973, 0, 0.000163356, -2.12806, 0.918586, 0.128322 )
+transform = Transform( 0.220742, 0, -0.0202569, 0, 0.461372, 0, 0.405139, 0, 0.0110371, -0.838201, 1.00866, -0.313853 )
