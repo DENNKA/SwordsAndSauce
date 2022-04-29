@@ -18,8 +18,8 @@ albedo_color = Color( 0.117647, 0.454902, 0.392157, 1 )
 [node name="player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30649, 0.845596, 0 )
 
-[node name="Enemy" parent="player" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.65458, 2.34116, -13.3619 )
+[node name="Enemy" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34809, 0.922198, -7.09183 )
 
 [node name="Ground" type="StaticBody" parent="."]
 
