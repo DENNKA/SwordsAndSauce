@@ -2,7 +2,7 @@ extends KinematicBody
 
 onready var player := get_tree().get_root().get_node("Test_Level").get_node("player")
 
-const MOVEMENT = 250
+const MOVEMENT = 300
 
 var velocity = Vector3.ZERO
 var direction = Vector3.ZERO
