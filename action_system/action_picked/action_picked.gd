@@ -26,9 +26,9 @@ func action():
 			queue_free()
 
 func _on_action_picked_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body.name == "player":
+	if body.name == "Player":
 		Global.action_object = self
 
 func _on_action_picked_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
-	if body.name == "player":
+	if body.name == "Player":
 		Global.action_object = null

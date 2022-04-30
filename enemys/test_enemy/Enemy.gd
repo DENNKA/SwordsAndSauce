@@ -1,6 +1,6 @@
 extends KinematicBody
 
-onready var player := get_tree().get_root().get_node("Test_Level").get_node("player")
+onready var player := get_tree().get_root().get_node("Test_Level").get_node("Player")
 
 const MOVEMENT = 300
 
