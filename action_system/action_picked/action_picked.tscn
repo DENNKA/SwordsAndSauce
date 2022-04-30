@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://action_system/action_picked/action_picked.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+albedo_color = Color( 0.968627, 0.0156863, 0.662745, 0.329412 )
+
+[node name="action_picked" type="Area"]
+script = ExtResource( 1 )
+
+[node name="shape" type="CollisionShape" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="mesh" type="MeshInstance" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[connection signal="body_shape_entered" from="." to="." method="_on_action_picked_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_action_picked_body_shape_exited"]

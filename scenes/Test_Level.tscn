@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/test_player/test_player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=2]
-[ext_resource path="res://scenes/test_weapon.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/gui.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/gui.tscn" type="PackedScene" id=3]
+[ext_resource path="res://items/test_item_01.tscn" type="PackedScene" id=4]
+[ext_resource path="res://items/test_item_02.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CylinderShape" id=2]
 
@@ -15,20 +15,15 @@ albedo_color = Color( 0.117647, 0.454902, 0.392157, 1 )
 
 [node name="Test_Level" type="Spatial"]
 
-[node name="player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30649, 0.845596, 0 )
-
-[node name="Enemy" parent="player" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.65458, 2.34116, -13.3619 )
-
 [node name="Ground" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.519508, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ground"]
 transform = Transform( 20, 0, 0, 0, 0.2, 0, 0, 0, 20, 0, 0, 0 )
 shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Ground"]
-transform = Transform( 20, 0, 0, 0, 0.2, 0, 0, 0, 20, 0, -0.411301, 0 )
+transform = Transform( 20, 0, 0, 0, 0.2, 0, 0, 0, 20, 0, 0, 0 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 material/0 = SubResource( 3 )
@@ -37,13 +32,31 @@ material/0 = SubResource( 3 )
 transform = Transform( -1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 10.0617, -20.7319 )
 shadow_enabled = true
 
+[node name="player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.36739, 1, 0 )
+
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.13505, 24.8453, 0 )
 speed = 10.0
 enabled = true
 script = ExtResource( 2 )
 
-[node name="gui" parent="." instance=ExtResource( 4 )]
+[node name="gui" parent="." instance=ExtResource( 3 )]
 
-[node name="test_weapon" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.220742, 0, -0.0202569, 0, 0.461372, 0, 0.405139, 0, 0.0110371, -0.838201, 1.00866, -0.313853 )
+[node name="test_item_01_" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75458, 0.659886, -1.71462 )
+
+[node name="test_item_01_2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.724692, 0.659886, -1.71462 )
+
+[node name="test_item_01_3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.724692, 0.659886, 0.875194 )
+
+[node name="test_item_02_" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.54778, 0.563556, 0.929334 )
+
+[node name="test_item_02_2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.54778, 0.563556, 2.95373 )
+
+[node name="test_item_02_3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.584485, 0.563556, 2.95373 )

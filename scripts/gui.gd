@@ -1,14 +1,18 @@
 extends Control
 
-func set_action_name(name):
-	$action_name.text = name
-
 func _ready():
-	Global.root_gui = self
+	Pack.gui_root = self
+	update()
 
-func _physics_process(delta):
-	if !Global.action_object:
-		set_action_name('')
-	elif is_instance_valid(Global.action_object):
-		if Global.action_object && 'action_name' in Global.action_object:
-			set_action_name(Global.action_object.action_name)
+func update():
+	remove()
+
+	for _cell in Pack.get_all():
+		var cell = preload("res://scenes/inventory_cell.tscn").instance()
+		$inventory/panel/grid.add_child(cell)
+		cell.get_child(0).text = String(Pack.all[_cell].count)
+
+func remove():
+	for cell in $inventory/panel/grid.get_children():
+		$inventory/panel/grid.remove_child(cell)
+		cell.queue_free()

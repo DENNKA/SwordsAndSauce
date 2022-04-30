@@ -12,7 +12,6 @@ func action():
 		Global.action_object.call('action')
 
 func _physics_process(delta):
-	
 	move(delta)
 	action_activate()
 
@@ -20,20 +19,18 @@ func move(delta):
 	direction = Vector3.ZERO
 	
 	if Input.is_action_pressed("move_right"):
-		rotate_y(-ROTATION * delta)
+		$body_camera.rotate_y(-ROTATION * delta)
 	if Input.is_action_pressed("move_left"):
-		rotate_y(ROTATION * delta)
+		$body_camera.rotate_y(ROTATION * delta)
 	if Input.is_action_pressed("move_forward"):
 		direction.x = 1
 	if Input.is_action_pressed("move_back"):
 		direction.x = -1
-		
-	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-		pass
-	
+
 	if direction:
 		direction *= MOVEMENT * delta
-		direction = direction.rotated(Vector3.UP, rotation.y)
+		$MeshInstance.rotation.y = $body_camera.rotation.y
+		direction = direction.rotated(Vector3.UP, $body_camera.rotation.y)
 	
 	velocity.x = direction.x
 	velocity.z = direction.z
