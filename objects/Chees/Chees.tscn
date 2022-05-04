@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://models/Chees/Chees.glb" type="PackedScene" id=1]
+[ext_resource path="res://models/Chees/Материал.material" type="Material" id=2]
+[ext_resource path="res://action_system/action_collected/action_collected.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/Chees/Chees.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Цилиндр:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Цилиндр:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.05, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "state"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Цилиндр:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -360, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Цилиндр:translation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.05, 0 ), Vector3( 0, 0.05, 0 ), Vector3( 0, -0.05, 0 ) ]
+}
+
+[node name="Chees" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+
+[node name="Цилиндр" parent="." index="0"]
+transform = Transform( 0.0712354, 0, 0, 0, 0.00821947, 0, 0, 0, 0.111237, 0, -0.05, 0 )
+material/0 = ExtResource( 2 )
+
+[node name="action_collected" parent="." index="1" instance=ExtResource( 3 )]
+transform = Transform( 0.641846, 0, 0, 0, -2.8056e-08, -0.534872, 0, 0.641846, -2.338e-08, 0, 0, 0.0321165 )
+visible = false
+collection_item = {
+"count": "60",
+"key": "health"
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+anims/RESET = SubResource( 1 )
+anims/state = SubResource( 2 )
