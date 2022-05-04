@@ -25,7 +25,7 @@ func update(key, amount):
 		return false
 	else:
 		all[key].amount += int(amount)
-		clamp(all[key].amount, 0, all[key].max_amount)
+		all[key].amount = clamp(all[key].amount, 0, all[key].max_amount)
 		return true
 
 func get_all():

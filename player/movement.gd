@@ -30,7 +30,7 @@ func _physics_process(delta):
 
 func move(delta):
 	direction = Vector3.ZERO
-	
+
 	if Input.is_action_pressed("move_right"):
 		direction.z = 1
 	if Input.is_action_pressed("move_left"):
@@ -45,13 +45,13 @@ func move(delta):
 		direction = direction.rotated(Vector3.UP, camera_h.rotation.y)
 		mesh.rotation.y = lerp_angle(turning.y, -atan2(direction.z, direction.x), delta * ROTATION)
 		turning.y = mesh.rotation.y
-		
-	
+
+
 	if is_on_floor():
 		velocity = Vector3(direction.x, 0, direction.z)
 	else:
 		velocity = Vector3(direction.x, GRAVITY, direction.z)
-	
+
 	velocity = move_and_slide(velocity, Vector3.UP)
 
 func jump():
