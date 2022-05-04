@@ -22,12 +22,10 @@ func update_stats(key, amount):
 		return false
 
 func update(stat, amount):
-	if stat.amount >= stat.max_amount:
-		return false
-	else:
-		stat.amount += int(amount)
-		stat.amount = clamp(stat.amount, 0, stat.max_amount)
-		return true
+	var prev_amount = stat.amount
+	stat.amount += int(amount)
+	stat.amount = clamp(stat.amount, 0, stat.max_amount)
+	return stat.amount != prev_amount
 
 func get_all():
 	return all

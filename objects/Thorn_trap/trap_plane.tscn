@@ -57,6 +57,12 @@ transform = Transform( 0.375718, 0, 0, 0, 0.375718, 0, 0, 0, 0.375718, 0, 0, 0 )
 script = ExtResource( 3 )
 
 [node name="action_collected" parent="." index="0" instance=ExtResource( 4 )]
+transform = Transform( 2.44643, 0, 0, 0, 1, 0, 0, 0, 2.32556, 0, 0, 0 )
+visible = false
+collection_item = {
+"count": "-20",
+"key": "health"
+}
 
 [node name="Куб" parent="." index="1"]
 transform = Transform( 1.42005, 0, 0, 0, 0.195581, 0, 0, 0, 1.42005, 0, 0, 0 )
