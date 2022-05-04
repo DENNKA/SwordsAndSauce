@@ -1,5 +1,7 @@
 extends Control
 
+var inventory_cell_scene = preload("res://scenes/inventory_cell.tscn").instance()
+
 func _ready():
 	Global.gui_root = self
 	update_inventory()
@@ -8,11 +10,10 @@ func _ready():
 
 func update_inventory():
 	remove()
-	
+
 	for _cell in Pack.get_all():
-		var inventory_cell = preload("res://scenes/inventory_cell.tscn").instance()
-		$inventory/panel/grid.add_child(inventory_cell)
-		inventory_cell.get_child(0).text = String(Pack.all[_cell].count)
+		$inventory/panel/grid.add_child(inventory_cell_scene)
+		inventory_cell_scene.get_child(0).text = String(Pack.all[_cell].count)
 
 func remove():
 	for inventory_cell in $inventory/panel/grid.get_children():
