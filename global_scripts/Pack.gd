@@ -1,7 +1,5 @@
 extends Node
 
-var gui_root
-
 var all = {}
 var max_size = 7
 
@@ -16,7 +14,7 @@ func add(key, label, icon = '', count = 1):
 			'icon' : icon
 		}
 	
-	gui_root.update()
+	Global.gui_root.update_inventory()
 
 func get(key):
 	return all[key] if all.has(key) else null

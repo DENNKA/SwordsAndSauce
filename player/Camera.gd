@@ -1,39 +1,31 @@
-extends Spatial
+extends ClippedCamera
 
-var camrot_h = 0
-var camrot_v = 0
-var cam_v_max = 75
-var cam_v_min = -55
-var h_sensitivity = 0.1
-var v_sensitivity = 0.1
-var h_acceleration = 10
-var v_acceleration = 10
+const ROT = 0.001
+
+const max_v = -1
+const min_v = 0.6
+
+var rot_x = 0
+var rot_y = 0
+
+var turning = Vector3.ZERO
+
+var camera_h
+var camera_v
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	$h/v/Camera.add_exception(get_parent())
-	
+	camera_h = get_node("../..")
+	camera_v = get_node("..")
+
 func _input(event):
 	if event is InputEventMouseMotion:
-		$mouse_control_stay_delay.start()
-		camrot_h += -event.relative.x * h_sensitivity
-		camrot_v += event.relative.y * v_sensitivity
+		rot_y -= event.relative.x * ROT
+		rot_x -= event.relative.y * ROT
 		
-func _physics_process(delta):
-	
-	camrot_v = clamp(camrot_v, cam_v_min, cam_v_max)
-	
-	var mesh_front = get_node("../Mesh").global_transform.basis.z
-	var rot_speed_multiplier = 0.15 #reduce this to make the rotation radius larger
-	var auto_rotate_speed =  (PI - mesh_front.angle_to($h.global_transform.basis.z)) * get_parent().velocity.length() * rot_speed_multiplier
-	
-	if $mouse_control_stay_delay.is_stopped():
-		#FOLLOW CAMERA
-		$h.rotation.y = lerp_angle($h.rotation.y, get_node("../Mesh").global_transform.basis.get_euler().y, delta * auto_rotate_speed)
-		camrot_h = $h.rotation_degrees.y
-	else:
-		#MOUSE CAMERA
-		$h.rotation_degrees.y = lerp($h.rotation_degrees.y, camrot_h, delta * h_acceleration)
-	
-	$h/v.rotation_degrees.x = lerp($h/v.rotation_degrees.x, camrot_v, delta * v_acceleration)
-	
+		if rot_x >= min_v:
+			rot_x = min_v
+		elif rot_x <= max_v:
+			rot_x = max_v
+		
+		camera_h.transform.basis = Basis(Vector3.UP, rot_y)
+		camera_v.transform.basis = Basis(Vector3(0,0,1), rot_x)

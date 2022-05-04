@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://action_system/action_picked/action_picked.tscn" type="PackedScene" id=1]
+[ext_resource path="res://action_system/action_collected/action_collected.tscn" type="PackedScene" id=1]
 
 [sub_resource type="CylinderMesh" id=1]
 
@@ -14,10 +14,9 @@ transform = Transform( -8.79742e-09, -0.0251577, 0, 0.201262, -1.09968e-09, 0, 0
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
-[node name="action_picked" parent="MeshInstance" instance=ExtResource( 1 )]
-transform = Transform( 3.65119, 4.90854e-09, 0, 3.14149e-07, 4.54954, 0, 0, 0, 3.68817, 0, 0, 0 )
-pack_item = {
-"icon": "health",
-"key": "Health",
-"label": "Аптечка"
+[node name="action_collected" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.499755, 0, 0, 0, 0.499755, 0, 0, 0, 0.499755, 0, 0, 0 )
+collection_item = {
+"count": "20",
+"key": "health"
 }
