@@ -14,18 +14,19 @@ var all = {
 }
 
 func update_stats(key, amount):
-	if update(key, amount):
+	var stat = all[key]
+	if update(stat, amount):
 		Global.gui_root.update_status(key, all[key].amount)
 		return true
 	else:
 		return false
 
-func update(key, amount):
-	if all[key].amount >= all[key].max_amount:
+func update(stat, amount):
+	if stat.amount >= stat.max_amount:
 		return false
 	else:
-		all[key].amount += int(amount)
-		all[key].amount = clamp(all[key].amount, 0, all[key].max_amount)
+		stat.amount += int(amount)
+		stat.amount = clamp(stat.amount, 0, stat.max_amount)
 		return true
 
 func get_all():
