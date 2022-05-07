@@ -25,6 +25,9 @@ visible = false
 [node name="mouse" parent="Mesh" instance=ExtResource( 4 )]
 transform = Transform( 0.261264, 0, 0, 0, 0.261264, 0, 0, 0, 0.261264, 0, -0.20376, 0 )
 
+[node name="Hand" type="Position3D" parent="Mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124203, 0, 1.69944 )
+
 [node name="camera_root" type="Spatial" parent="."]
 
 [node name="cam_h" type="Spatial" parent="camera_root"]
