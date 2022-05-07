@@ -3,7 +3,7 @@ extends Node
 var all = {
 	'health' : {
 		'key' : 'health',
-		'amount' : 19,
+		'amount' : 20,
 		'max_amount' : 100
 	},
 	'coins' : {
@@ -24,7 +24,7 @@ func update_stats(key, amount):
 func update(stat, amount):
 	var prev_amount = stat.amount
 	stat.amount += int(amount)
-	stat.amount = clamp(stat.amount, 0, stat.max_amount)
+	stat.amount = clamp(stat.amount, -100, stat.max_amount)
 	return stat.amount != prev_amount
 
 func get_all():

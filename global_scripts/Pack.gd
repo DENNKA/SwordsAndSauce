@@ -6,7 +6,7 @@ var max_size = 7
 func add(key, label, icon = '', count = 1):
 	if all.has(key):
 		all[key].count += count
-	else:
+	elif len(all) <= max_size:
 		all[key] = {
 			'key' : key,
 			'label' : label,
@@ -24,6 +24,9 @@ func count(key):
 
 func has(key):
 	return all.has(key)
+
+func lenght():
+	return len(all)
 
 func remove(key, count = 1):
 	if has(key):

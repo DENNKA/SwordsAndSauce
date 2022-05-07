@@ -25,8 +25,6 @@ func _physics_process(delta):
 	move(delta)
 	jump()
 	action_activate()
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
 
 func move(delta):
 	direction = Vector3.ZERO
@@ -60,3 +58,4 @@ func jump():
 func action_activate():
 	if Input.is_action_just_pressed("use"):
 		action()
+		
