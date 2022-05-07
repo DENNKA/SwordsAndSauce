@@ -32,6 +32,9 @@ material_override = SubResource( 5 )
 mesh = SubResource( 2 )
 material/0 = null
 
+[node name="Hand" type="Position3D" parent="Mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124203, 0, 1.69944 )
+
 [node name="camera_root" type="Spatial" parent="."]
 
 [node name="cam_h" type="Spatial" parent="camera_root"]

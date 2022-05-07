@@ -4,8 +4,16 @@ onready var player := get_tree().get_root().get_node("Test_Level").get_node("Pla
 
 const MOVEMENT = 300
 
+var health = 100
+
 var velocity = Vector3.ZERO
 var direction = Vector3.ZERO
+
+func damage(damageHp):
+    health -= damageHp
+    if health < 0:
+        health = 0
+        queue_free()
 
 func _ready():
 	pass
@@ -17,7 +25,7 @@ func _process(delta):
 	var angle = (vec2pos - vec2posPlayer).angle()
 	var distance = vec2pos.distance_to(vec2posPlayer)
 	rotate_y(-angle - get_rotation().y)
-	
+
 	direction = Vector3.ZERO
 	if distance > 3.0:
 		direction.x = -1
@@ -25,8 +33,8 @@ func _process(delta):
 	if direction:
 		direction *= MOVEMENT * delta
 		direction = direction.rotated(Vector3.UP, rotation.y)
-	
+
 	velocity.x = direction.x
 	velocity.z = direction.z
-	
+
 	move_and_slide(velocity, Vector3.UP)
