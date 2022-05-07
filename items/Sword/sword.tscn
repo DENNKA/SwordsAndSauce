@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://models/Sword/Sword.glb" type="PackedScene" id=1]
+[ext_resource path="res://action_system/action_picked/action_picked.tscn" type="PackedScene" id=2]
+[ext_resource path="res://models/Sword/Материал.material" type="Material" id=3]
+
+[node name="sword" instance=ExtResource( 1 )]
+transform = Transform( 0.0350522, 0, 0, 0, 0.0350522, 0, 0, 0, 0.0350522, 0, 0, 0 )
+
+[node name="Куб" parent="." index="0"]
+transform = Transform( -9.15971e-08, -0.0413369, 0, 2.0955, -1.80689e-09, 0, 0, 0, 0.158816, 0, 7.5, 0 )
+material/0 = ExtResource( 3 )
+
+[node name="action_picked" parent="." index="1" instance=ExtResource( 2 )]
+transform = Transform( 6.72551, 0, 0, 0, 22.023, 0, 0, 0, 6.4127, 0, 15.6621, 0 )
+visible = false
+pack_item = {
+"icon": "sword",
+"key": "Sword",
+"label": "Меч"
+}

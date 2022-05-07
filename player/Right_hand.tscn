@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://player/Right_hand.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="Right_hand" type="Spatial"]
+transform = Transform( 0.822084, 0.569366, 0, -0.569366, 0.822084, 0, 0, 0, 1, 0, 0.367989, 0.312973 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.259586, 0, 0, 0, 0.0530539, 0, 0, 0, 0.0530539, 0.181735, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
