@@ -13,8 +13,8 @@ func add(key, label, icon = '', count = 1):
 			'count' : count,
 			'icon' : icon
 		}
-	
-	Global.gui_root.update_inventory()
+
+	Global.gui_root.update()
 
 func get(key):
 	return all[key] if all.has(key) else null

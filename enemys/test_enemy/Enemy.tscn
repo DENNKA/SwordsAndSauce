@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://enemys/test_enemy/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://enemys/Enemy_core.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -23,5 +22,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.558429, 0.0360844, 0.036775
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0360844, 0 )
 shape = SubResource( 2 )
-
-[node name="Enemy_core" parent="." instance=ExtResource( 2 )]

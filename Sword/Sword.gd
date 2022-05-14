@@ -1,4 +1,4 @@
-extends Spatial
+extends Area
 
 onready var entity := get_parent()
 onready var entity_model := entity.get_node("Mesh")

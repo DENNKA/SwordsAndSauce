@@ -1,7 +1,6 @@
 extends Entity
 
 onready var player := get_tree().get_root().get_node("Test_Level").get_node("Player")
-onready var core = $"Enemy_core"
 
 func _ready():
 	pass
@@ -30,6 +29,3 @@ func _process(delta):
 	velocity.z = direction.z
 
 	move_and_slide(velocity, Vector3.UP)
-
-func damaged(amount):
-	core.damaged(amount)

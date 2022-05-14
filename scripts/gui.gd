@@ -19,7 +19,7 @@ func update_inventory():
 		inventory_cell_scene.get_child(0).text = String(Pack.all[_cell].count)
 		inventory_cell_scene.get_child(1).text = String(number)
 		number += 1
-	
+
 	if active_cell_key != null:
 		$inventory/panel/grid.get_child(active_cell_key).color =  Color( 0.65, 0.16, 0.16, 1 )
 

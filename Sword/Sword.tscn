@@ -2,10 +2,9 @@
 
 [ext_resource path="res://Sword/Sword.gd" type="Script" id=1]
 [ext_resource path="res://models/Sword/Sword.glb" type="PackedScene" id=2]
-[ext_resource path="res://action_system/action_damaged/action_damaged.tscn" type="PackedScene" id=3]
 
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 1, 0.505868, 1 )
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.148664, 0.202493, 0.205883 )
 
 [node name="Sword" type="Area"]
 transform = Transform( 0.128994, 0, 0, 0, 0.232146, 0, 0, 0, 0.2086, 0, 0.191482, 0 )
@@ -14,10 +13,6 @@ script = ExtResource( 1 )
 [node name="sword" parent="." instance=ExtResource( 2 )]
 transform = Transform( -2.38281e-08, 0.981038, 0, -0.116249, -9.14485e-09, 0, 0, 0, 0.315701, 0, 0, 0 )
 
-[node name="action_damaged" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.260257, 0, 0, 0, 1.53613, 0, 0, 0, 0.383177, 0, 1.56217, 0 )
-use_frequency = false
-stats = {
-"count": -20,
-"key": "health"
-}
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 9.58459, 0, 0, 0, 1, 0, 1.43762, 0 )
+shape = SubResource( 1 )
