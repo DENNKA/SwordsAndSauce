@@ -11,3 +11,7 @@ func _ready():
 
 [node name="mouse" instance=ExtResource( 1 )]
 script = SubResource( 1 )
+
+[node name="Hand" type="BoneAttachment" parent="Арматура/Skeleton" index="1"]
+transform = Transform( 0.503727, 0.858575, 0.095437, 0.202215, -0.224599, 0.953239, 0.839862, -0.460873, -0.286753, 0.313982, 0.720396, 0.878935 )
+bone_name = "Bone.013"

@@ -1,19 +1,6 @@
-extends KinematicBody
+extends Entity
 
 onready var player := get_tree().get_root().get_node("Test_Level").get_node("Player")
-
-const MOVEMENT = 300
-
-var health = 100
-
-var velocity = Vector3.ZERO
-var direction = Vector3.ZERO
-
-func damage(damageHp):
-    health -= damageHp
-    if health < 0:
-        health = 0
-        queue_free()
 
 func _ready():
 	pass
@@ -27,12 +14,16 @@ func _process(delta):
 	rotate_y(-angle - get_rotation().y)
 
 	direction = Vector3.ZERO
-	if distance > 3.0:
+	if distance > 0.1:
 		direction.x = -1
+	if distance < 0.7:
+		attack()
 
 	if direction:
 		direction *= MOVEMENT * delta
 		direction = direction.rotated(Vector3.UP, rotation.y)
+
+	_to_floor()
 
 	velocity.x = direction.x
 	velocity.z = direction.z
