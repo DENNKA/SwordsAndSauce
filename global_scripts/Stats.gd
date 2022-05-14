@@ -1,5 +1,7 @@
 extends Node
 
+var invincible = false
+
 var all = {
 	'health' : {
 		'key' : 'health',

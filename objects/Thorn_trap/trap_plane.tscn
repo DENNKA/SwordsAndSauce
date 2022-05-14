@@ -37,7 +37,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "state"
-length = 1.5
+length = 2.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("trap 3x3:translation")
@@ -49,7 +49,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, -0.35, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, -0.35, 0 ) ]
 }
 
 [node name="trap_plane" instance=ExtResource( 1 )]
@@ -60,13 +60,14 @@ script = ExtResource( 3 )
 transform = Transform( 1.42005, 0, 0, 0, 0.195581, 0, 0, 0, 1.42005, 0, 0, 0 )
 
 [node name="trap 3x3" type="Spatial" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="action_damaged" parent="trap 3x3" index="0" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1.14106, 0, 0, 0, 0.246966, 0, 0, 0, 1.14106, 0, 0.179315, 0 )
 visible = false
 damage_frequency = 1.5
-collection_item = {
-"count": "-20",
+stats = {
+"count": -20,
 "key": "health"
 }
 

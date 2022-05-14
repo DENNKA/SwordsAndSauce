@@ -1,22 +1,12 @@
 extends KinematicBody
 
 onready var player := get_tree().get_root().get_node("Test_Level").get_node("Player")
+onready var core = $"Enemy_core"
 
-const MOVEMENT = 300
-
-var health = 100
+const MOVEMENT = 100
 
 var velocity = Vector3.ZERO
 var direction = Vector3.ZERO
-
-func damage(damageHp):
-    health -= damageHp
-    if health < 0:
-        health = 0
-        queue_free()
-
-func _ready():
-	pass
 
 func _process(delta):
 	var player_pos = player.global_transform.origin
@@ -27,7 +17,7 @@ func _process(delta):
 	rotate_y(-angle - get_rotation().y)
 
 	direction = Vector3.ZERO
-	if distance > 3.0:
+	if distance > 1.0:
 		direction.x = -1
 
 	if direction:
@@ -38,3 +28,6 @@ func _process(delta):
 	velocity.z = direction.z
 
 	move_and_slide(velocity, Vector3.UP)
+
+func damaged(amount):
+	core.damaged(amount)

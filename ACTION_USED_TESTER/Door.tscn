@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ACTION_USED_TESTER/Door.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ) ]
+}
+
+[node name="door_01" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="body" type="StaticBody" parent="."]
+
+[node name="shape" type="CollisionShape" parent="body"]
+transform = Transform( 0.306817, 0, 0, 0, 0.468524, 0, 0, 0, 0.0634899, 0.25, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="mesh" type="MeshInstance" parent="body"]
+transform = Transform( 0.306817, 0, 0, 0, 0.468524, 0, 0, 0, 0.0634899, 0.25, 0, 0 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/open = SubResource( 4 )

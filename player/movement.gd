@@ -58,4 +58,6 @@ func jump():
 func action_activate():
 	if Input.is_action_just_pressed("use"):
 		action()
-		
+
+func damaged(amount):
+	Stats.update_stats('health', amount)

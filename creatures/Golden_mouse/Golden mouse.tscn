@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://models/Golden_mouse/Golden mouse.glb" type="PackedScene" id=1]
+[ext_resource path="res://models/Golden_mouse/Material_001.material" type="Material" id=2]
+
+[node name="Golden mouse" instance=ExtResource( 1 )]
+transform = Transform( 0.966569, 0, -0.256407, 0, 1, 0, 0.256407, 0, 0.966569, 0, 0, 0 )
+
+[node name="Mouse" parent="." index="0"]
+transform = Transform( 0.298704, 0, -0.954346, 0, 1, 0, 0.954346, 0, 0.298704, 0.00212431, 0.0123872, -0.0326967 )
+material/0 = ExtResource( 2 )
