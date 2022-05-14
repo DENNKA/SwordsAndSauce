@@ -1,13 +1,4 @@
-extends KinematicBody
-
-## Speed:
-const MOVEMENT = 300
-const GRAVITY = -20
-const ROTATION = 4
-
-var velocity = Vector3.ZERO
-var direction = Vector3.ZERO
-var turning = Vector3.ZERO
+extends Entity
 
 var mesh
 var camera_h
@@ -44,11 +35,10 @@ func move(delta):
 		mesh.rotation.y = lerp_angle(turning.y, -atan2(direction.z, direction.x), delta * ROTATION)
 		turning.y = mesh.rotation.y
 
+	if Input.is_mouse_button_pressed(BUTTON_LEFT):
+		attack()
 
-	if is_on_floor():
-		velocity = Vector3(direction.x, 0, direction.z)
-	else:
-		velocity = Vector3(direction.x, GRAVITY, direction.z)
+	_to_floor()
 
 	velocity = move_and_slide(velocity, Vector3.UP)
 
@@ -59,5 +49,3 @@ func action_activate():
 	if Input.is_action_just_pressed("use"):
 		action()
 
-func damaged(amount):
-	Stats.update_stats('health', amount)
