@@ -17,7 +17,7 @@ var turning = Vector3.ZERO
 
 func _ready():
 	targeter = get_node("../../../../mem")
-	
+
 	camera_h = get_node("../..")
 	camera_v = get_node("..")
 

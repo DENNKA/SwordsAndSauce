@@ -17,7 +17,7 @@ func _ready():
 	mesh = get_node("Body")
 	camera_h = get_node("Camera_root/cam_h")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
+
 
 func _physics_process(delta):
 	move(delta)
@@ -46,15 +46,15 @@ func move(delta):
 		$"Body/PlayerMesh/AnimationPlayer".play("walk")
 	else:
 		$"Body/PlayerMesh/AnimationPlayer".play("idle")
-	
+
 	mover(delta)
-	
+
 	if Input.is_action_just_pressed("jump"):
 		jump()
-	
+
 	if Input.is_action_just_pressed("dodge"):
 		is_dodge = true
-	
+
 	if is_dodge:
 		self_postion = self.global_transform.origin
 		dodge_dir = $"Body/Dodger".global_transform.origin
@@ -62,17 +62,17 @@ func move(delta):
 		global_transform.origin.z = lerp(self_postion.z, dodge_dir.z, 0.5)
 		yield(get_tree().create_timer(0.2), "timeout")
 		is_dodge = false
-	
+
 	if !is_dodge:
-		velocity = move_and_slide(velocity, Vector3.UP)
+		velocity = move_and_slide(velocity, Vector3.UP, true)
 
 func action():
 	if Input.is_action_just_pressed("use") && Global.action_object:
 		Global.action_object.call('action')
-		
+
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
 		attack()
-		
+
 	if Input.is_action_just_pressed("target") && enemys_range != null && enemys_range.size() > 0:
 		if main_cam.current:
 			target_cam.current = true
