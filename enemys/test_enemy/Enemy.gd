@@ -20,10 +20,10 @@ func _process(delta):
 		attack()
 
 	if direction:
-		direction *= MOVEMENT * delta
+		direction *= movement * delta
 		direction = direction.rotated(Vector3.UP, rotation.y)
 
-	_to_floor()
+	mover(delta)
 
 	velocity.x = direction.x
 	velocity.z = direction.z

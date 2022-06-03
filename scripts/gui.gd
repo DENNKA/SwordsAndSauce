@@ -39,4 +39,3 @@ func use(key):
 	if active_cell_key != null:
 		$inventory/panel/grid.get_child(active_cell_key).reload_color()
 	active_cell_key = key
-	$inventory/panel/grid.get_child(active_cell_key).color =  Color( 0.65, 0.16, 0.16, 1 )

@@ -60,14 +60,13 @@ script = ExtResource( 3 )
 transform = Transform( 1.42005, 0, 0, 0, 0.195581, 0, 0, 0, 1.42005, 0, 0, 0 )
 
 [node name="trap 3x3" type="Spatial" parent="." index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="action_damaged" parent="trap 3x3" index="0" instance=ExtResource( 4 )]
 transform = Transform( 1.14106, 0, 0, 0, 0.246966, 0, 0, 0, 1.14106, 0, 0.179315, 0 )
 visible = false
 damage_frequency = 1.5
 stats = {
-"count": -20,
+"count": 20,
 "key": "health"
 }
 

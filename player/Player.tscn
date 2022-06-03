@@ -1,40 +1,95 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://player/movement.gd" type="Script" id=1]
 [ext_resource path="res://player/Camera.gd" type="Script" id=2]
-[ext_resource path="res://player/Right_hand.tscn" type="PackedScene" id=3]
-[ext_resource path="res://creatures/Mouse/mouse.tscn" type="PackedScene" id=4]
+[ext_resource path="res://models/Player/playerdwa.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/Enemys_detector.gd" type="Script" id=4]
+[ext_resource path="res://player/TargetCam.gd" type="Script" id=5]
 
-[sub_resource type="CylinderShape" id=1]
-radius = 1.01044
+[sub_resource type="CapsuleShape" id=1]
+height = 1.36417
+
+[sub_resource type="CubeMesh" id=5]
+
+[sub_resource type="SphereShape" id=6]
+
+[sub_resource type="SphereMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+albedo_color = Color( 0.909804, 0.152941, 0.152941, 0.396078 )
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443713, 0 )
 script = ExtResource( 1 )
 
 [node name="Shape" type="CollisionShape" parent="."]
-transform = Transform( 0.249987, 0, 0.00251615, 0, 0.5, 0, -0.00251323, 0, 0.250278, 0, 0, 0 )
+transform = Transform( 0.250499, 0, -1.3007e-08, 1.09497e-08, 4.78615e-16, 0.297566, 0, -0.250494, 5.68554e-16, 0, 0, 0 )
 shape = SubResource( 1 )
 
-[node name="Right_hand" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.712437, 0.493424, 0, -0.493424, 0.712437, 0, 0, 0, 0.866622, 0, 0.379883, 0.271228 )
+[node name="Body" type="Spatial" parent="."]
+
+[node name="PlayerMesh" parent="Body" instance=ExtResource( 3 )]
+transform = Transform( 0.259155, 0, 0, 0, 0.259155, 0, 0, 0, 0.259155, 0, -0.0794194, 0 )
+
+[node name="Dodger" type="MeshInstance" parent="Body"]
+transform = Transform( 0.232264, 0, 0, 0, 0.232264, 0, 0, 0, 0.232264, 1, 0, 0 )
 visible = false
+mesh = SubResource( 5 )
+material/0 = null
 
-[node name="Mesh" type="Spatial" parent="."]
+[node name="Camera_root" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
 
-[node name="mouse" parent="Mesh" instance=ExtResource( 4 )]
-transform = Transform( 0.261264, 0, 0, 0, 0.261264, 0, 0, 0, 0.261264, 0, -0.20376, 0 )
+[node name="cam_h" type="Spatial" parent="Camera_root"]
 
-[node name="camera_root" type="Spatial" parent="."]
+[node name="cam_v" type="Spatial" parent="Camera_root/cam_h"]
 
-[node name="cam_h" type="Spatial" parent="camera_root"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72977, 0 )
-
-[node name="cam_v" type="Spatial" parent="camera_root/cam_h"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0826099, 0 )
-
-[node name="Camera" type="ClippedCamera" parent="camera_root/cam_h/cam_v"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.04899, 0, 0 )
+[node name="Camera" type="ClippedCamera" parent="Camera_root/cam_h/cam_v"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0.2, 0 )
 current = true
 process_mode = 1
 script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Camera_root/cam_h"]
+transform = Transform( 0.232264, 0, 0, 0, 0.232264, 0, 0, 0, 0.232264, 0, 0, 0 )
+visible = false
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Target_сamera_root" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
+
+[node name="cam_h" type="Spatial" parent="Target_сamera_root"]
+
+[node name="cam_v" type="Spatial" parent="Target_сamera_root/cam_h"]
+
+[node name="TargetCam" type="ClippedCamera" parent="Target_сamera_root/cam_h/cam_v"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0.2, 0 )
+script = ExtResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Target_сamera_root/cam_h"]
+transform = Transform( 0.232264, 0, 0, 0, 0.232264, 0, 0, 0, 0.232264, 0, 0, 0 )
+visible = false
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 6.86364, 0, 0, 0, 6.86364, 0, 0, 0, 6.86364, 0, 0, 0 )
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area"]
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="mem" type="MeshInstance" parent="."]
+transform = Transform( 0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0.8, 0 )
+visible = false
+mesh = SubResource( 5 )
+material/0 = null
+
+[connection signal="body_shape_entered" from="Area" to="Area" method="_on_Area_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area" to="Area" method="_on_Area_body_shape_exited"]

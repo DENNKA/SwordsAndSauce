@@ -1,88 +1,53 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://objects/Coin/Coin.tscn" type="PackedScene" id=2]
-[ext_resource path="res://objects/Chees/Chees.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/lvl_00/tscn/Gorshok.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemys/test_enemy/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/gui.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/Thorn_trap/trap_plane.tscn" type="PackedScene" id=5]
-[ext_resource path="res://items/Sword/sword.tscn" type="PackedScene" id=6]
-[ext_resource path="res://items/Test_item/Spatial.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Sword/Sword.tscn" type="PackedScene" id=8]
-[ext_resource path="res://enemys/test_enemy/Enemy.tscn" type="PackedScene" id=9]
-
-[sub_resource type="CylinderShape" id=2]
-
-[sub_resource type="CylinderMesh" id=1]
-
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.117647, 0.454902, 0.392157, 1 )
+[ext_resource path="res://objects/Coin/Coin.tscn" type="PackedScene" id=5]
 
 [node name="Test_Level" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.44916, 0 )
 
 [node name="gui" parent="." instance=ExtResource( 4 )]
 
-[node name="Ground" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.795127, 0 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45074, 0 )
+movement = 10
 
-[node name="CollisionShape" type="CollisionShape" parent="Ground"]
-transform = Transform( 20, 0, 0, 0, 0.2, 0, 0, 0, 20, 0, 0, 0 )
-shape = SubResource( 2 )
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 0.620115, 0, 0, 0, 0.620115, 0, 0, 0, 0.620115, 0, 0, 0 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Ground"]
-transform = Transform( 20, 0, 0, 0, 0.2, 0, 0, 0, 20, 0, 0, 0 )
-mesh = SubResource( 1 )
-skeleton = NodePath("../..")
-material/0 = SubResource( 3 )
+[node name="Gorshok" parent="Spatial" instance=ExtResource( 2 )]
+transform = Transform( 31.147, 0, 0, 0, 31.147, 0, 0, 0, 31.147, 0, -18.5817, 0 )
+
+[node name="Gorshok2" parent="Spatial" instance=ExtResource( 2 )]
+transform = Transform( 1.73755, 0, 0, 0, 1.73755, 0, 0, 0, 1.73755, 15.0702, 9.16799, 0 )
+
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.21979, 1.58777, -1.29638 )
+movement = 0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( -1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 10.0617, -20.7319 )
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 45.4627, 0 )
+light_color = Color( 1, 0.396078, 0.396078, 1 )
 shadow_enabled = true
+directional_shadow_blend_splits = true
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.562728, 0 )
+[node name="Coin" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.549579, 0, 0, 0, -2.40229e-08, -0.549579, 0, 0.549579, -2.40229e-08, 2.28624, 1.18497, -4.43838 )
 
-[node name="Sword" parent="Player" instance=ExtResource( 8 )]
+[node name="Coin2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.549579, 0, 0, 0, -2.40229e-08, -0.549579, 0, 0.549579, -2.40229e-08, 2.05528, 1.18497, -7.0946 )
 
-[node name="Enemy" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81132, 0.771802, -0.0327163 )
+[node name="Coin3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.549579, 0, 0, 0, -2.40229e-08, -0.549579, 0, 0.549579, -2.40229e-08, 5.35982, 1.18497, -6.99604 )
 
-[node name="Sword" parent="Enemy" instance=ExtResource( 8 )]
+[node name="Coin4" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.549579, 0, 0, 0, -2.40229e-08, -0.549579, 0, 0.549579, -2.40229e-08, -3.24128, 1.18497, -7.3411 )
 
-[node name="Coin" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.47458, 0.169428, -1.64729 )
+[node name="Coin5" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.549579, 0, 0, 0, -2.40229e-08, -0.549579, 0, 0.549579, -2.40229e-08, -1.35929, 1.18497, -8.3216 )
 
-[node name="Coin2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.47458, 0.169428, 0.578258 )
-
-[node name="Chees" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.56363, 0.191887, -1.60274 )
-
-[node name="Chees3" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4805, 0.191887, -1.60274 )
-
-[node name="Chees2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.56363, 0.191887, 0.546289 )
-
-[node name="trap_plane" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.375718, 0, 0, 0, 0.375718, 0, 0, 0, 0.375718, 3.14472, -0.63367, 0.563568 )
-
-[node name="trap_plane2" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.375718, 0, 0, 0, 0.375718, 0, 0, 0, 0.375718, 3.14472, -0.63367, -1.6177 )
-
-[node name="sword" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.0350522, 0, 0, 0, 0.0350522, 0, 0, 0, 0.0350522, 4.57043, 0.00988293, 2.94168 )
-
-[node name="sword2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.0350522, 0, 0, 0, 0.0350522, 0, 0, 0, 0.0350522, 6.07853, 0.00988293, 2.94168 )
-
-[node name="sword3" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.0350522, 0, 0, 0, 0.0350522, 0, 0, 0, 0.0350522, 7.86351, 0.00988293, 2.94168 )
-
-[node name="sword4" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.0350522, 0, 0, 0, 0.0350522, 0, 0, 0, 0.0350522, 10.3506, 0.00988293, 2.94168 )
-
-[node name="Spatial" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87443, -0.592693, -5.82341 )
-
-[node name="Spatial2" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.46106, -0.594129, -6.29716 )
+[node name="Coin6" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.549579, 0, 0, 0, -2.40229e-08, -0.549579, 0, 0.549579, -2.40229e-08, 2.05528, 1.18497, -8.92909 )

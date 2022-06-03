@@ -18,7 +18,7 @@ func _ready():
 	camera_v = get_node("..")
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && current:
 		rot_y -= event.relative.x * ROT
 		rot_x -= event.relative.y * ROT
 		

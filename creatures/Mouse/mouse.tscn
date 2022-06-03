@@ -13,5 +13,5 @@ func _ready():
 script = SubResource( 1 )
 
 [node name="Hand" type="BoneAttachment" parent="Арматура/Skeleton" index="1"]
-transform = Transform( 0.503727, 0.858575, 0.095437, 0.202215, -0.224599, 0.953239, 0.839862, -0.460873, -0.286753, 0.313982, 0.720396, 0.878935 )
+transform = Transform( -0.109877, 0.363631, -0.92504, 0.520957, 0.813668, 0.257971, 0.846482, -0.453561, -0.278839, 0.615263, 1.42249, 0.881031 )
 bone_name = "Bone.013"
